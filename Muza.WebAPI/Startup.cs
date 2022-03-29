@@ -17,6 +17,7 @@ using Muza.Services.User;
 
 namespace Muza.WebAPI
 {
+    //start up
     public class Startup
     {
         public Startup(IConfiguration configuration)
