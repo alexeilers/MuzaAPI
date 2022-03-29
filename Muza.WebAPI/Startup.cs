@@ -35,6 +35,7 @@ namespace Muza.WebAPI
 
             services.AddHttpContextAccessor();
 
+            //Add services to startup
             services.AddScoped<IUserService, UserService>();
 
 
