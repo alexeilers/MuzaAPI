@@ -1,10 +1,9 @@
+using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Muza.Models.ArtistRating;
 using Muza.Services.ArtistRating;
-using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
+
 
 namespace Muza.WebAPI.Controllers
 {
@@ -18,12 +17,12 @@ namespace Muza.WebAPI.Controllers
             _artistRatingService = artistRatingService;
         }
 
-    //Get api/Note
+    //Get api/ArtistRating
     [HttpGet]
     public async Task<IActionResult> GetAllArtistRatings()
     {
-        var notes = await _artistRatingService.GetAllArtistRatingAsync();
-            return Ok(notes);
+        var ratings = await _artistRatingService.GetAllArtistRatingAsync();
+            return Ok(ratings);
     }
     
     [HttpPost]
@@ -38,7 +37,7 @@ namespace Muza.WebAPI.Controllers
         return BadRequest("Artist rating could not be created.");
     }
 
-    // DELETE api/Note/5
+    // DELETE api/ArtistRating/5
     [HttpDelete("{artistId:int}")]
     public async Task<IActionResult> DeleteArtistRating([FromRoute] int artistId)
     {
