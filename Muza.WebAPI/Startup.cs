@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Muza.Data;
+using Muza.Services.AlbumRating;
 using Muza.Services.User;
 
 namespace Muza.WebAPI
@@ -37,6 +38,7 @@ namespace Muza.WebAPI
 
             //Add services to startup
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAlbumRatingService, AlbumRatingService>();
 
 
             services.AddControllers();
