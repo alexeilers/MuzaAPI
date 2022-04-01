@@ -22,5 +22,7 @@ namespace Muza.Data.Entities
         [Required]
         public string Description { get; set; }
         public List<AlbumEntity> ListOfAlbums { get; set; }
+
+        //comment for re-pushing
     }
 }
