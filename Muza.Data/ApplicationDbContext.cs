@@ -19,6 +19,5 @@ namespace Muza.Data
         public DbSet<AlbumEntity> Albums {get; set;}
         public DbSet<ArtistRatingEntity> ArtistRating {get; set;}
         public DbSet<AlbumRatingEntity> AlbumRatings {get; set;}
-        
     }
 }
