@@ -34,7 +34,7 @@ namespace Muza.Services.Artist
                 Name = request.Name,
                 Genre = request.Genre,
                 Description = request.Description,
-                OwnerId = _userId
+                OwnerId = 1
             };
 
             _dbContext.Artists.Add(artistEntity);
@@ -46,11 +46,12 @@ namespace Muza.Services.Artist
         public async Task<IEnumerable<ArtistListItem>> GetAllArtistsAsync()
         {
             var artists = await _dbContext.Artists
-                .Where(entity => entity.OwnerId == _userId)
                 .Select(entity => new ArtistListItem
                 {
                     Id = entity.Id,
                     Name = entity.Name,
+                    Genre = entity.Genre,
+                    Description = entity.Description,
                 })
                 .ToListAsync();
             
@@ -61,7 +62,7 @@ namespace Muza.Services.Artist
         {
             var artistEntity = await _dbContext.Artists
                 .FirstOrDefaultAsync(e =>
-                    e.Id == artistId && e.OwnerId == _userId
+                    e.Id == artistId 
                 );
             return artistEntity is null ? null : new ArtistDetail
             {
@@ -76,8 +77,8 @@ namespace Muza.Services.Artist
         {
             var artistEntity = await _dbContext.Artists.FindAsync(request.Id);
 
-            if (artistEntity?.OwnerId != _userId)
-                return false;
+            // if (artistEntity?.OwnerId != 1)
+            //     return false;
             
             artistEntity.Name = request.Name;
             artistEntity.Genre = request.Genre;
@@ -92,8 +93,8 @@ namespace Muza.Services.Artist
         {
             var artistEntity = await _dbContext.Artists.FindAsync(artistId);
 
-            if (artistEntity?.OwnerId != _userId)
-                return false;
+            // if (artistEntity?.OwnerId != _userId)
+            //     return false;
 
             _dbContext.Artists.Remove(artistEntity);
             return await _dbContext.SaveChangesAsync() == 1;
