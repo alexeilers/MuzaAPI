@@ -13,10 +13,10 @@ namespace Muza.Data.Entities
         [Key]
         public int Id {get; set;}
 
-        [ForeignKey(nameof(ArtistId))]
+        [ForeignKey(nameof(Artist))]
 
         public int? ArtistId {get; set;}
-        public ArtistRatingEntity ArtistRating {get; set;}
+        public ArtistEntity Artist {get; set;}
 
         [Required]
         public int Rating {get; set;}

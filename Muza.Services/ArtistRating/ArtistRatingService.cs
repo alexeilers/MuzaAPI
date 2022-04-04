@@ -8,12 +8,15 @@ using Muza.Models.ArtistRating;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Muza.Services.ArtistRating
 {
     public class ArtistRatingService : IArtistRatingService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _dbContext;
+        public ArtistRatingService(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public async Task<bool> CreateArtistRatingAsync(ArtistRatingCreate request)
     {
@@ -24,16 +27,12 @@ namespace Muza.Services.ArtistRating
             DateCreated = DateTime.Now
         };
 
-        _context.ArtistRating.Add(artistRatingEntity);
+        _dbContext.ArtistRating.Add(artistRatingEntity);
 
-        var numberOfChanges = await _context.SaveChangesAsync();
+        var numberOfChanges = await _dbContext.SaveChangesAsync();
         return numberOfChanges == 1;
     }
 
-        public Task<bool> DeleteArtistRatingAsync(int ArtistId)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<IEnumerable<ArtistRatingListItem>> GetAllArtistRatingAsync()
         {
@@ -41,6 +40,25 @@ namespace Muza.Services.ArtistRating
         }
 
         public Task<ArtistRatingDetail> GetArtistRatingByIdAsync(int ArtistId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> UpdateArtistRatingAsync(ArtistRatingUpdate request)
+        {
+            var ArtistRatingEntity = await _dbContext.ArtistRating.FindAsync(request.Id);
+
+            if (ArtistRatingEntity?.Id != 1)
+                return false;
+            
+            ArtistRatingEntity.Rating = request.Rating;
+            
+
+            var numberOfChanges = await _dbContext.SaveChangesAsync();
+
+            return numberOfChanges == 1;
+        }
+        public Task<bool> DeleteArtistRatingAsync(int ArtistId)
         {
             throw new NotImplementedException();
         }
