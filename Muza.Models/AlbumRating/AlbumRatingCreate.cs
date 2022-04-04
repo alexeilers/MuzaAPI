@@ -11,7 +11,7 @@ namespace Muza.Models.Rating
         [Required]
         [Range(1, 5, ErrorMessage = "Rating must be between {1} and {5}")]
         public int AlbumRating {get;set;}
+        [Required]
         public int AlbumId {get;set;}
-        public int Id {get;set;}
     }
 }

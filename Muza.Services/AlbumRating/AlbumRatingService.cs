@@ -27,11 +27,6 @@ namespace Muza.Services.AlbumRating
                 CreatedUtc = DateTimeOffset.Now
             };
 
-            if (request.AlbumId > 0)
-            {
-                albumRatingEntity.AlbumId = request.AlbumId;
-            }
-
             _dbContext.AlbumRatings.Add(albumRatingEntity);
             
             var numberOfChanges = await _dbContext.SaveChangesAsync();
@@ -46,7 +41,6 @@ namespace Muza.Services.AlbumRating
             {
                 Id = entity.Id,
                 AlbumId = entity.AlbumId,
-                CreatedUtc =entity.CreatedUtc
             })
             .ToListAsync();
 
@@ -89,10 +83,11 @@ namespace Muza.Services.AlbumRating
             // Find AlbumRating by Id
             var albumRatingEntity = await _dbContext.AlbumRatings.FindAsync(albumId);
 
-            // Validate that the Entity exist
+            // Validate that the AlbumRating exist
             if (albumRatingEntity is null)
                 return false;
 
+            // Delete AlbumRating by Id
             _dbContext.AlbumRatings.Remove(albumRatingEntity);
             return await _dbContext.SaveChangesAsync() == 1;
         }
