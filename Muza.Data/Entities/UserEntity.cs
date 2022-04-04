@@ -22,7 +22,7 @@ namespace Muza.Data.Entities
         public string Password { get; set; }
 
         [Required]
-        public DateTime DateCreated { get; set; }
+        public DateTime CreatedUtc { get; set; }
 
     }
 }
