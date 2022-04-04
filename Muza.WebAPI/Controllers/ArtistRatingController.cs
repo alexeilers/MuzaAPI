@@ -17,14 +17,6 @@ namespace Muza.WebAPI.Controllers
             _artistRatingService = artistRatingService;
         }
 
-    //Get api/ArtistRating
-    [HttpGet]
-    public async Task<IActionResult> GetAllArtistRatings()
-    {
-        var ratings = await _artistRatingService.GetAllArtistRatingAsync();
-            return Ok(ratings);
-    }
-    
     [HttpPost]
     public async Task<IActionResult> CreateArtistRating([FromBody] ArtistRatingCreate request)
     {
@@ -36,15 +28,15 @@ namespace Muza.WebAPI.Controllers
 
         return BadRequest("Artist rating could not be created.");
     }
-
-    // DELETE api/ArtistRating/5
-    [HttpDelete("{artistId:int}")]
-    public async Task<IActionResult> DeleteArtistRating([FromRoute] int artistId)
+    //Get api/ArtistRating
+    [HttpGet]
+    public async Task<IActionResult> GetAllArtistRatings()
     {
-        return await _artistRatingService.DeleteArtistRatingAsync(artistId)
-        ? Ok($"Artist rating {artistId} was deleted successfully.")
-        : BadRequest($"Artist rating {artistId} could not be deleted.");
+        var ratings = await _artistRatingService.GetAllArtistRatingsAsync();
+            return Ok(ratings);
     }
+    
+
 
     [HttpPut]
     public async Task<IActionResult> UpdateArtistRatingById([FromBody] ArtistRatingUpdate request)
@@ -55,6 +47,15 @@ namespace Muza.WebAPI.Controllers
         return await _artistRatingService.UpdateArtistRatingAsync(request)
         ? Ok("Artist rating updated successfully.")
         : BadRequest("Artist rating could not be updated.");
+    }
+    
+    // DELETE api/ArtistRating/5
+    [HttpDelete("{artistId:int}")]
+    public async Task<IActionResult> DeleteArtistRating([FromRoute] int artistId)
+    {
+        return await _artistRatingService.DeleteArtistRatingAsync(artistId)
+        ? Ok($"Artist rating {artistId} was deleted successfully.")
+        : BadRequest($"Artist rating {artistId} could not be deleted.");
     }
     }
 }
