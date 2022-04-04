@@ -45,5 +45,16 @@ namespace Muza.WebAPI.Controllers
         ? Ok($"Artist rating {artistId} was deleted successfully.")
         : BadRequest($"Artist rating {artistId} could not be deleted.");
     }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateArtistRatingById([FromBody] ArtistRatingUpdate request)
+    {
+        if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+
+        return await _artistRatingService.UpdateArtistRatingAsync(request)
+        ? Ok("Artist rating updated successfully.")
+        : BadRequest("Artist rating could not be updated.");
+    }
     }
 }
