@@ -31,8 +31,8 @@ namespace Muza.Services.Album
 
             _dbContext.Albums.Add(album);
 
-            var numberofChanges = await _dbContext.SaveChangesAsync();
-            return numberofChanges == 1;
+            var numberOfChanges = await _dbContext.SaveChangesAsync();
+            return numberOfChanges == 1;
         }
 
         //Get All Albums
@@ -69,7 +69,7 @@ namespace Muza.Services.Album
             //Find the first album that has the given ID that matches the request
             var album = await _dbContext.Albums.FirstOrDefaultAsync(a => a.Id == albumId);
 
-            //If AlbumEntity is null then return null, else return new Albumdetail
+            //If AlbumEntity is null then return null, else return new AlbumDetail
             return album is null ? null : new AlbumDetail
             {
                 Id = album.Id,
@@ -118,9 +118,9 @@ namespace Muza.Services.Album
             album.ModifiedUtc = DateTimeOffset.Now;
 
             //Save Changes to the DB
-            var numberofChanges = await _dbContext.SaveChangesAsync();
+            var numberOfChanges = await _dbContext.SaveChangesAsync();
 
-            return numberofChanges == 1;
+            return numberOfChanges == 1;
         }
 
         //Delete Album
