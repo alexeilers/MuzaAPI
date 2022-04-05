@@ -17,6 +17,6 @@ namespace Muza.Services.ArtistRating
         //Update artist rating
         Task<bool> UpdateArtistRatingAsync(ArtistRatingUpdate request);
         //Delete artist rating
-        Task<bool> DeleteArtistRatingAsync(int artistRatingId);
+        Task<bool> DeleteArtistRatingAsync(int ArtistRatingId);
     }
 }

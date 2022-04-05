@@ -51,11 +51,11 @@ namespace Muza.WebAPI.Controllers
     
     // DELETE api/ArtistRating/5
     [HttpDelete("{artistId:int}")]
-    public async Task<IActionResult> DeleteArtistRating([FromRoute] int artistId)
+    public async Task<IActionResult> DeleteArtistRating([FromRoute] int artistRatingId)
     {
-        return await _artistRatingService.DeleteArtistRatingAsync(artistId)
-        ? Ok($"Artist rating {artistId} was deleted successfully.")
-        : BadRequest($"Artist rating {artistId} could not be deleted.");
+        return await _artistRatingService.DeleteArtistRatingAsync(artistRatingId)
+        ? Ok($"Artist rating {artistRatingId} was deleted successfully.")
+        : BadRequest($"Artist rating {artistRatingId} could not be deleted.");
     }
     }
 }
