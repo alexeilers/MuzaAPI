@@ -12,8 +12,6 @@ namespace Muza.Services.ArtistRating
         Task<bool> CreateArtistRatingAsync(ArtistRatingCreate request);
         //Get all Artist ratings
         Task<IEnumerable<ArtistRatingListItem>> GetAllArtistRatingsAsync();
-        //Get Artist rating by Id
-        Task<ArtistRatingDetail> GetArtistRatingByIdAsync(int artistRatingId);
         //Update artist rating
         Task<bool> UpdateArtistRatingAsync(ArtistRatingUpdate request);
         //Delete artist rating

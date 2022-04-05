@@ -24,6 +24,7 @@ namespace Muza.Services.AlbumRating
             var albumRatingEntity = new AlbumRatingEntity
             {
                 Rating = request.AlbumRating,
+                AlbumId = request.AlbumId,
                 CreatedUtc = DateTimeOffset.Now
             };
 
@@ -40,6 +41,7 @@ namespace Muza.Services.AlbumRating
             .Select(entity => new AlbumRatingListItems
             {
                 Id = entity.Id,
+                Rating = entity.Rating,
                 AlbumId = entity.AlbumId,
             })
             .ToListAsync();

@@ -44,22 +44,7 @@ namespace Muza.Services.ArtistRating
 
             return artistRating;
         }
-
-        public async Task<ArtistRatingDetail> GetArtistRatingByIdAsync(int ArtistId)
-        {
-            var artistRatingEntity = await _dbContext.ArtistRatings
-                .FirstOrDefaultAsync(e =>
-                e.Id == ArtistId);
-
-            return artistRatingEntity is null ? null : new ArtistRatingDetail
-            {
-                Id = artistRatingEntity.Id,
-                Rating = artistRatingEntity.Rating,
-                ArtistId = artistRatingEntity.ArtistId,
-                CreatedUtc = artistRatingEntity.CreatedUtc
-                
-            };
-        }
+// REMOVED GET ALBUM RATINGS BY ID METHOD
 
         public async Task<bool> UpdateArtistRatingAsync(ArtistRatingUpdate request)
         {
