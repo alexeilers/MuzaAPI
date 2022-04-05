@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Muza.Data.Entities
 {
-    public class ArtistRatingsEntity
+    public class ArtistRatingEntity
     {
         
         [Key]
@@ -15,7 +15,7 @@ namespace Muza.Data.Entities
 
         [ForeignKey(nameof(Artist))]
 
-        public int? ArtistRatingsId {get; set;}
+        public int? ArtistId {get; set;}
         public ArtistEntity Artist {get; set;}
 
         [Required]
