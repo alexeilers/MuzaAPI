@@ -37,9 +37,8 @@ namespace Muza.WebAPI.Controllers
     }
     
 
-
     [HttpPut]
-    public async Task<IActionResult> UpdateArtistRatingById([FromForm] ArtistRatingUpdate request)
+    public async Task<IActionResult> UpdateArtistRatingById([FromBody] ArtistRatingUpdate request)
     {
         if (!ModelState.IsValid)
         return BadRequest(ModelState);
@@ -50,7 +49,7 @@ namespace Muza.WebAPI.Controllers
     }
     
     // DELETE api/ArtistRating/5
-    [HttpDelete("{artistRatingId:int}")]
+    [HttpDelete("{artistId:int}")]
     public async Task<IActionResult> DeleteArtistRating([FromRoute] int artistRatingId)
     {
         return await _artistRatingService.DeleteArtistRatingAsync(artistRatingId)
