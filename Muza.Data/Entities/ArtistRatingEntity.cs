@@ -20,7 +20,7 @@ namespace Muza.Data.Entities
 
         [Required]
         public int Rating {get; set;}
-        
+ 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
