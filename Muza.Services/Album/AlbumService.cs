@@ -56,6 +56,7 @@ namespace Muza.Services.Album
             .Select(entity => new AlbumListItem
             {
                 Id = entity.Id,
+                ArtistId = entity.ArtistId,
                 Title = entity.Title,
                 Description = entity.Description
             }).ToListAsync();

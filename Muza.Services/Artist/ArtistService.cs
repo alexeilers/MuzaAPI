@@ -16,13 +16,8 @@ namespace Muza.Services.Artist
     {
         private readonly int _userId;
         private readonly ApplicationDbContext _dbContext;
-        public ArtistService(IHttpContextAccessor httpContextAccessor, ApplicationDbContext dbContext)
+        public ArtistService(ApplicationDbContext dbContext)
         {
-            var userClaims = httpContextAccessor.HttpContext.User.Identity as ClaimsIdentity;
-            var value = userClaims.FindFirst("Id")?.Value;
-            var validId = int.TryParse(value, out _userId);
-            if (!validId)
-                throw new Exception("Attempted to build ArtistService without User Id claim.");
 
                 _dbContext = dbContext;
         }

@@ -23,10 +23,10 @@ namespace Muza.Services.User
         public async Task<bool> RegisterUserAsync(UserRegister model)
         {
             //Check for Duplicate Username/Email
-            if(await GetUserByEmailAsync(model.Email) !=null || GetUserByUsernameAsync(model.Username) !=null)
-            {
-                return false;
-            }
+            // if(await GetUserByEmailAsync(model.Email) !=null || GetUserByUsernameAsync(model.Username) !=null)
+            // {
+            //     return false;
+            // }
 
             var user = new UserEntity
             {
