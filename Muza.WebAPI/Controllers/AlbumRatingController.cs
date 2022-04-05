@@ -19,7 +19,7 @@ namespace Muza.WebAPI.Controllers
         }
 
         // Post API/AlbumRating/Add AlbumRating
-        [HttpPost("Add Album Rating")]
+        [HttpPost("AddRating")]
         public async Task<IActionResult> CreateAlbumRating([FromForm] AlbumRatingCreate request)
         {
             if (!ModelState.IsValid)
@@ -54,7 +54,7 @@ namespace Muza.WebAPI.Controllers
 
         // Put API/AlbumRating/Update
         [HttpPut]
-        public async Task<IActionResult> UpdateAlbumAsync([FromBody] AlbumRatingUpdate request)
+        public async Task<IActionResult> UpdateAlbumAsync([FromForm] AlbumRatingUpdate request)
         {
             if (!ModelState.IsValid)
             {
