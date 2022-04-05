@@ -8,8 +8,8 @@ namespace Muza.Models.ArtistRating
     public class ArtistRatingDetail
     {
         public int Id { get; set; }
-        public int ArtistId { get; set; }
+        public int ArtistRatingId { get; set; }
         public int Rating { get; set; }
-        public DateTime DateCreated { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
     }
 }

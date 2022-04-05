@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Muza.Data;
 using Muza.Data.Entities;
-using Muza.Models.ArtistRating;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Muza.Models.ArtistRating;
 
 namespace Muza.Services.ArtistRating
 {
@@ -20,11 +19,11 @@ namespace Muza.Services.ArtistRating
 
         public async Task<bool> CreateArtistRatingAsync(ArtistRatingCreate request)
     {
-        var artistRatingEntity = new ArtistRatingEntity
+        var artistRatingEntity = new ArtistRatingsEntity
         {
-            ArtistId = request.ArtistId,
+            ArtistRatingsId = request.ArtistRatingId,
             Rating = request.Rating,
-            DateCreated = DateTime.Now
+            CreatedUtc = DateTimeOffset.Now
         };
 
         _dbContext.ArtistRating.Add(artistRatingEntity);
@@ -34,14 +33,32 @@ namespace Muza.Services.ArtistRating
     }
 
 
-        public Task<IEnumerable<ArtistRatingListItem>> GetAllArtistRatingAsync()
+        public async Task<IEnumerable<ArtistRatingListItem>> GetAllArtistRatingsAsync()
         {
-            throw new NotImplementedException();
+            var artistRating = await _dbContext.ArtistRating.Select(entity => new ArtistRatingListItem
+            {
+                Id = entity.Id,
+                ArtistRatingId = (int)entity.ArtistRatingsId,
+                Rating = entity.Rating
+            }).ToListAsync();
+
+            return artistRating;
         }
 
-        public Task<ArtistRatingDetail> GetArtistRatingByIdAsync(int ArtistId)
+        public async Task<ArtistRatingDetail> GetArtistRatingByIdAsync(int artistRatingId)
         {
-            throw new NotImplementedException();
+            var artistRatingEntity = await _dbContext.ArtistRating
+                .FirstOrDefaultAsync(e =>
+                e.Id == artistRatingId);
+
+            return artistRatingEntity is null ? null : new ArtistRatingDetail
+            {
+                Id = artistRatingEntity.Id,
+                Rating = artistRatingEntity.Rating,
+                ArtistRatingId = (int)artistRatingEntity.ArtistRatingsId,
+                CreatedUtc = artistRatingEntity.CreatedUtc
+                
+            };
         }
 
         public async Task<bool> UpdateArtistRatingAsync(ArtistRatingUpdate request)
@@ -58,9 +75,17 @@ namespace Muza.Services.ArtistRating
 
             return numberOfChanges == 1;
         }
-        public Task<bool> DeleteArtistRatingAsync(int ArtistId)
+        public async Task<bool> DeleteArtistRatingAsync(int ArtistRatingsId)
         {
-            throw new NotImplementedException();
+            var artistRatings = await _dbContext.ArtistRating.FindAsync(ArtistRatingsId);
+
+            if(artistRatings is null)
+            {
+                return false;
+            }
+
+            _dbContext.ArtistRating.Remove(artistRatings);
+            return await _dbContext.SaveChangesAsync() == 1;
         }
     }
 }
