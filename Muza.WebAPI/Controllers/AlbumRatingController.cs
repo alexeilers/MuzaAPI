@@ -18,14 +18,8 @@ namespace Muza.WebAPI.Controllers
             _albumRatingService = albumRatingService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAllAlbumRatings()
-        {
-            var albumRatings = await _albumRatingService.GetAllAlbumRatingsAsync();
-            return Ok(albumRatings);
-        }
-
-        [HttpPost("Add")]
+        // Post API/AlbumRating/Add AlbumRating
+        [HttpPost("Add Album Rating")]
         public async Task<IActionResult> CreateAlbumRating([FromForm] AlbumRatingCreate request)
         {
             if (!ModelState.IsValid)
@@ -35,10 +29,55 @@ namespace Muza.WebAPI.Controllers
 
             if (await _albumRatingService.CreateAlbumRatingAsync(request))
             {
-                return Ok("Rating add successfully.");
+                return Ok("Album Rating created successfully.");
             }
 
-            return BadRequest("Rating could not be added");
+            return BadRequest("Album Rating could not be created");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllAlbumRatings()
+        {
+            var albumRatings = await _albumRatingService.GetAllAlbumRatingsAsync();
+            return Ok(albumRatings);
+        }
+
+        // Get API/AlbumRating
+        [HttpGet("{albumRatingId:int}")]
+        public async Task<IActionResult> GetAlbumRatingByIdAsync([FromRoute] int albumRatingId)
+        {   
+            var albumRatingDetail = await _albumRatingService.GetAlbumRatingByIdAsync(albumRatingId);
+                return albumRatingDetail is not null
+                    ? Ok(albumRatingDetail)
+                    : NotFound("There are no Album Ratings matching that Id.");
+        }
+
+        // Put API/AlbumRating/Update
+        [HttpPut]
+        public async Task<IActionResult> UpdateAlbumAsync([FromBody] AlbumRatingUpdate request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return await _albumRatingService.UpdateAlbumRatingAsync(request)
+                ? Ok("Album Rating was updated successfully.")
+                : BadRequest("Album Rating could not be updated.");
+        }
+
+        // Delete API/Album Rating
+        [HttpDelete("{albumRatingId:int}")]
+        public async Task<IActionResult> DeleteAlbumRating([FromRoute] int albumRatingId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return await _albumRatingService.DeleteAlbumRatingAsync(albumRatingId)
+                ? Ok($"Album Rating {albumRatingId} was deleted successfully.")
+                : BadRequest("Album Rating {albumRatingId} could not be deleted");
         }
     }
 }

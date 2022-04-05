@@ -10,6 +10,6 @@ namespace Muza.Models.ARNote.cs
         public int Id {get;set;}
         public int AlbumId {get;set;}
         public int Rating {get;set;}
-        public DateTimeOffset CreatedUtc {get;set;}
+        
     }
 }
