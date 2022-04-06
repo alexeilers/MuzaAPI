@@ -44,16 +44,12 @@ namespace Muza.Services.ArtistRating
 
             return artistRating;
         }
-// REMOVED GET ALBUM RATINGS BY ID METHOD
 
         public async Task<bool> UpdateArtistRatingAsync(ArtistRatingUpdate request)
         {
-            var ArtistRatingEntity = await _dbContext.ArtistRatings.FindAsync(request.Id);
-
-            if (ArtistRatingEntity?.Id != 1)
-                return false;
+            var artistRatingEntity = await _dbContext.ArtistRatings.FindAsync(request.Id);
             
-            ArtistRatingEntity.Rating = request.Rating;
+            artistRatingEntity.Rating = request.Rating;
             
 
             var numberOfChanges = await _dbContext.SaveChangesAsync();
@@ -62,14 +58,14 @@ namespace Muza.Services.ArtistRating
         }
         public async Task<bool> DeleteArtistRatingAsync(int ArtistRatingId)
         {
-            var artistRatings = await _dbContext.ArtistRatings.FindAsync(ArtistRatingId);
+            var artistRating = await _dbContext.ArtistRatings.FindAsync(ArtistRatingId);
 
-            if(artistRatings is null)
+            if(artistRating is null)
             {
                 return false;
             }
 
-            _dbContext.ArtistRatings.Remove(artistRatings);
+            _dbContext.ArtistRatings.Remove(artistRating);
             return await _dbContext.SaveChangesAsync() == 1;
         }
     }

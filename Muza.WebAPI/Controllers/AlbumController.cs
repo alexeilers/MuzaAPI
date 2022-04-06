@@ -36,6 +36,7 @@ namespace Muza.WebAPI.Controllers
             return BadRequest("Album could not be created.");
         }
 
+        //Get api/Album
         [HttpGet]
         public async Task<IActionResult> GetAllAlbums()
         {
@@ -49,7 +50,7 @@ namespace Muza.WebAPI.Controllers
         {
             var albumDetail = await _albumService.GetAllAlbumsByArtistIdAsync(artistId);
 
-            return albumDetail is not null ? Ok(albumDetail) : NotFound("There are no albums matching that Artist Id.");
+            return albumDetail is not null ? Ok(albumDetail) : NotFound($"There are no albums with an Id of {artistId}.");
         }
 
         //Get api/Album/1
