@@ -71,6 +71,15 @@ namespace Muza.WebAPI.Controllers
             return albumDetail is not null? Ok(albumDetail) : NotFound("There is no album matching that title.");
         }
 
+        //Get api/Album/ByArtistName
+        [HttpGet("ByArtistName")]
+        public async Task<IActionResult> GetAllAlbumsByArtistName([FromForm] string artistName)
+        {
+            var albums = await _albumService.GetAllAlbumsByArtistNameAsync(artistName);
+
+            return albums is not null ? Ok(albums) : NotFound($"There are currently no albums by {artistName}");
+        }
+
         //Put api/Album
         [HttpPut]
         public async Task<IActionResult> UpdateAlbumById([FromForm] AlbumUpdate request)
