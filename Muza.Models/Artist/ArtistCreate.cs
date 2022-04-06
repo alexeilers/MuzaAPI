@@ -17,6 +17,8 @@ namespace Muza.Models.Artist
         [Required]
         public string Genre { get; set; }
         [Required]
+        public string YearCreated { get; set; }
+        [Required]
         [MaxLength(9999, ErrorMessage = "{0} must contain no more than {1} characters.")]
         public string Description { get; set; }
     }

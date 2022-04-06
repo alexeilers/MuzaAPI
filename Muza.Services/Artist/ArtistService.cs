@@ -28,6 +28,7 @@ namespace Muza.Services.Artist
             {
                 Name = request.Name,
                 Genre = request.Genre,
+                YearCreated = request.YearCreated,
                 Description = request.Description,
                 OwnerId = 1
             };
@@ -64,6 +65,7 @@ namespace Muza.Services.Artist
                 Id = artistEntity.Id,
                 Name = artistEntity.Name,
                 Genre = artistEntity.Genre,
+                YearCreated = artistEntity.YearCreated,
                 Description = artistEntity.Description,
             };
         }
@@ -77,6 +79,7 @@ namespace Muza.Services.Artist
             
             artistEntity.Name = request.Name;
             artistEntity.Genre = request.Genre;
+            artistEntity.YearCreated = request.YearCreated;
             artistEntity.Description = request.Description;
 
             var numberOfChanges = await _dbContext.SaveChangesAsync();

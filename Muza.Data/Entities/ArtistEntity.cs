@@ -24,6 +24,7 @@ namespace Muza.Data.Entities
         [Required]
         [Range(1,9999, ErrorMessage = "Description must be from {0} to {1}.")]
         public string Description { get; set; }
+        public string YearCreated {get; set; }
         public List<AlbumEntity> ListOfAlbums { get; set; }
         [Required]
         public DateTime DateCreatedUtc { get; set; }
