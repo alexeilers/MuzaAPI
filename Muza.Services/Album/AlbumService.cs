@@ -113,7 +113,6 @@ namespace Muza.Services.Album
             }
 
             //Update entity's properties
-            album.Title = request.Title;
             album.Description = request.Description;
             album.SongList = request.SongList;
             album.ModifiedUtc = DateTimeOffset.Now;
