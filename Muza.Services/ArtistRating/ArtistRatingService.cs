@@ -50,6 +50,7 @@ namespace Muza.Services.ArtistRating
             var artistRatingEntity = await _dbContext.ArtistRatings.FindAsync(request.Id);
             
             artistRatingEntity.Rating = request.Rating;
+            artistRatingEntity.ModifiedUtc = DateTimeOffset.Now;
             
 
             var numberOfChanges = await _dbContext.SaveChangesAsync();

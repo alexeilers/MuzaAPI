@@ -73,6 +73,7 @@ namespace Muza.Services.AlbumRating
                 return false;
 
             albumRatingEntity.Rating = request.Rating;
+            albumRatingEntity.ModifiedUtc = DateTimeOffset.Now;
 
             var numberOfChanges = await _dbContext.SaveChangesAsync();
 
