@@ -69,12 +69,14 @@ namespace Muza.Services.Album
         {
             //Find the first album that has the given ID that matches the request
             var album = await _dbContext.Albums.FirstOrDefaultAsync(a => a.Id == albumId);
+            var artist = await _dbContext.Artists.FirstOrDefaultAsync(art => art.Id == album.ArtistId);
 
             //If AlbumEntity is null then return null, else return new AlbumDetail
             return album is null ? null : new AlbumDetail
             {
                 Id = album.Id,
                 ArtistId = album.ArtistId,
+                ArtistName = artist.Name,
                 Title = album.Title,
                 Description = album.Description,
                 SongList = album.SongList,
@@ -88,17 +90,35 @@ namespace Muza.Services.Album
         {
             //Find first album that has the given Title that matches the request
             var album = await _dbContext.Albums.FirstOrDefaultAsync(a => a.Title == albumTitle);
+            var artist = await _dbContext.Artists.FirstOrDefaultAsync(a => a.Id == album.ArtistId);
 
             //If the AlbumEntity is null then return null, else return new AlbumDetail
             return album is null ? null : new AlbumDetail
             {
                 Id = album.Id,
                 ArtistId = album.ArtistId,
+                ArtistName = artist.Name,
                 Title = album.Title,
                 Description = album.Description,
                 SongList = album.SongList,
                 CreatedUtc = album.CreatedUtc
             };            
+        }
+
+        //Get Album By ArtistName
+        public async Task<IEnumerable<AlbumListItem>> GetAllAlbumsByArtistNameAsync(string artistName)
+        {
+            var artist = await _dbContext.Artists.FirstOrDefaultAsync(a => a.Name == artistName);
+            var albums =  await _dbContext.Albums.Where(album => album.ArtistId == artist.Id)
+            .Select(album => new AlbumListItem
+            {
+                Id = album.Id,
+                ArtistId = album.ArtistId,
+                Title = album.Title,
+                Description = album.Description
+            }).ToListAsync();
+
+            return albums;
         }
 
         //Update Album
