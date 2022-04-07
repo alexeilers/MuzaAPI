@@ -49,6 +49,16 @@ namespace Muza.WebAPI.Controllers
                 : NotFound();
         }
 
+        [HttpGet("ByArtistName")]
+        public async Task<IActionResult> GetByArtistName([FromForm] string artistName)
+        {
+            var detail = await _artistService.GetByArtistNameAsync(artistName);
+
+            return detail is not null
+                ? Ok(detail)
+                : NotFound();
+        }
+
         [HttpPut]
         public async Task<IActionResult> UpdateArtistById([FromBody] ArtistUpdate request)
         {
