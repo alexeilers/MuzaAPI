@@ -28,7 +28,7 @@ Artist Rating: Get All Artist Ratings.
 Album Rating: Get All Album Ratings, Get Album Ratings by Id.
 
 
-# UPDATE
+## UPDATE
 #### Created PUT requests that updated the following:
 
 Artists: Name, Genre, Description, Year Created.
@@ -37,5 +37,5 @@ Artist Rating: Rating.
 Album Rating: Rating.
 
 
-# DELETE
+## DELETE
 #### Created DELETE requests that deleted each entity.
