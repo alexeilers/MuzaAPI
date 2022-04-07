@@ -13,28 +13,28 @@ Through rigorous testing of our code and endpoints, we completed a comprehensive
 ## CREATE
 #### Created POST requests creating the following entities and properties:
 
-Artists: Name, Genre, Description, Year Created, List of Albums.
-Albums: Artist, Title, Description, Song List.
-Artist Rating: Artist, Rating.
-Album Rating: Album, Rating.
+Artists: Name, Genre, Description, Year Created, List of Albums.  
+Albums: Artist, Title, Description, Song List.  
+Artist Rating: Artist, Rating.  
+Album Rating: Album, Rating.  
 
 
 ## READ
 #### Created GET requests that pulled the following:
 
-Artists: Get by Artist Id, Get All Artists, Get Artist by Name.
-Albums: Get All Albums, Get Albums by Artist Id, Get Album by Id, Get Albums by Artist.
-Artist Rating: Get All Artist Ratings.
-Album Rating: Get All Album Ratings, Get Album Ratings by Id.
+Artists: Get by Artist Id, Get All Artists, Get Artist by Name.  
+Albums: Get All Albums, Get Albums by Artist Id, Get Album by Id, Get Albums by Artist.  
+Artist Rating: Get All Artist Ratings.  
+Album Rating: Get All Album Ratings, Get Album Ratings by Id.  
 
 
 ## UPDATE
 #### Created PUT requests that updated the following:
 
-Artists: Name, Genre, Description, Year Created.
-Album: Description, Song List.
-Artist Rating: Rating.
-Album Rating: Rating.
+Artists: Name, Genre, Description, Year Created.  
+Album: Description, Song List.  
+Artist Rating: Rating.  
+Album Rating: Rating.  
 
 
 ## DELETE
