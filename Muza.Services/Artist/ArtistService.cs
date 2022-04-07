@@ -56,6 +56,22 @@ namespace Muza.Services.Artist
             return artists;
         }
 
+        public async Task <ArtistDetail> GetByArtistNameAsync(string artistName)
+        {
+            var artist = await _dbContext.Artists
+                .FirstOrDefaultAsync(e =>
+                    e.Name == artistName
+                );
+            return artist is null ? null : new ArtistDetail
+            {
+                Id = artist.Id,
+                Name = artist.Name,
+                Genre = artist.Genre,
+                YearCreated = artist.YearCreated,
+                Description = artist.Description,
+            };
+        }
+
         public async Task <ArtistDetail> GetArtistByIdAsync(int artistId)
         {
             var artistEntity = await _dbContext.Artists

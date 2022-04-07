@@ -12,11 +12,14 @@ namespace Muza.Services.Artist
         // Create Artist
         Task<bool> CreateArtistAsync(ArtistCreate request);
 
-        // Get Artists
+        // Get All Artists
         Task<IEnumerable<ArtistListItem>> GetAllArtistsAsync();
 
-        // Read Artist
+        // Get Artists by Id
         Task<ArtistDetail> GetArtistByIdAsync(int artistId);
+
+        // Get Artists by Name
+        Task<ArtistDetail> GetByArtistNameAsync(string artistName);
 
         // Update Artists
         Task<bool> UpdateArtistAsync(ArtistUpdate request);
