@@ -1,4 +1,4 @@
-MUZA
+# MUZA
 
 Welcome to Muza, the music collector's database for storing, cataloging, and rating your favorite artists and albums.
 
