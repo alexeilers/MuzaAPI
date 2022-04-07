@@ -38,6 +38,7 @@ namespace Muza.WebAPI.Controllers
 
         //Get api/Album
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<AlbumListItem>), 200)]
         public async Task<IActionResult> GetAllAlbums()
         {
             var albums = await _albumService.GetAllAlbumsAsync();
@@ -46,6 +47,7 @@ namespace Muza.WebAPI.Controllers
 
         //Get api/Album/ByArtist/1
         [HttpGet("ByArtist/{artistId:int}")]
+        [ProducesResponseType(typeof(IEnumerable<AlbumListItem>), 200)]
         public async Task<IActionResult> GetAllAlbumsByArtistId([FromRoute] int artistId)
         {
             var albumDetail = await _albumService.GetAllAlbumsByArtistIdAsync(artistId);
@@ -55,6 +57,7 @@ namespace Muza.WebAPI.Controllers
 
         //Get api/Album/1
         [HttpGet("{albumId:int}")]
+        [ProducesResponseType(typeof(AlbumDetail), 200)]
         public async Task<IActionResult> GetAlbumById([FromRoute] int albumId)
         {
             var albumDetail = await _albumService.GetAlbumByIdAsync(albumId);
@@ -64,6 +67,7 @@ namespace Muza.WebAPI.Controllers
 
         //Get api/Album/ByTitle
         [HttpGet("ByTitle")]
+        [ProducesResponseType(typeof(AlbumDetail), 200)]
         public async Task<IActionResult> GetAlbumByTitle([FromForm] string albumTitle)
         {
             var albumDetail = await _albumService.GetAlbumByTitleAsync(albumTitle);
@@ -73,6 +77,7 @@ namespace Muza.WebAPI.Controllers
 
         //Get api/Album/ByArtistName
         [HttpGet("ByArtistName")]
+        [ProducesResponseType(typeof(IEnumerable<AlbumListItem>), 200)]
         public async Task<IActionResult> GetAllAlbumsByArtistName([FromForm] string artistName)
         {
             var albums = await _albumService.GetAllAlbumsByArtistNameAsync(artistName);
