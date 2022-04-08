@@ -22,8 +22,8 @@ namespace Muza.Services.User
         //Create
         public async Task<bool> RegisterUserAsync(UserRegister model)
         {
-            //Check for Duplicate Username/Email
-            if(await GetUserByEmailAsync(model.Email) !=null || GetUserByUsernameAsync(model.Username) !=null)
+            // Check for Duplicate Username/Email
+            if(await GetUserByEmailAsync(model.Email) !=null || await GetUserByUsernameAsync(model.Username) !=null)
             {
                 return false;
             }
@@ -32,7 +32,7 @@ namespace Muza.Services.User
             {
                 Email = model.Email,
                 Username = model.Username,
-                DateCreated = DateTime.Now
+                CreatedUtc = DateTime.Now
 
             };
 
@@ -40,9 +40,9 @@ namespace Muza.Services.User
             user.Password = passwordHasher.HashPassword(user, model.Password);
 
             _context.Users.Add(user);
-            var numberofChanges = await _context.SaveChangesAsync();
+            var numberOfChanges = await _context.SaveChangesAsync();
 
-            return numberofChanges == 1;
+            return numberOfChanges == 1;
         }
         //Read
         public async Task<UserDetail> GetUserByIdAsync(int userId)
@@ -57,7 +57,7 @@ namespace Muza.Services.User
                 Id = user.Id,
                 Email = user.Email,
                 Username = user.Username,
-                DateCreated = user.DateCreated
+                DateCreated = user.CreatedUtc
             };
 
             return userDetail;
