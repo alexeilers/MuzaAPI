@@ -75,6 +75,8 @@ namespace Muza.WebAPI
             {
                 endpoints.MapControllers();
             });
+
+            // comment for push test
         }
     }
 }
