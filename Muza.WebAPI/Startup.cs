@@ -76,7 +76,7 @@ namespace Muza.WebAPI
                 endpoints.MapControllers();
             });
 
-            // comment for push test
+            // comment for test push to show up as contributor.
         }
     }
 }
