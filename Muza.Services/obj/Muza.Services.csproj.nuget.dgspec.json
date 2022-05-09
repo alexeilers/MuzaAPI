@@ -1,0 +1,199 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Services/Muza.Services.csproj": {}
+  },
+  "projects": {
+    "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Data/Muza.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Data/Muza.Data.csproj",
+        "projectName": "Muza.Data",
+        "projectPath": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Data/Muza.Data.csproj",
+        "packagesPath": "/Users/alexeilers/.nuget/packages/",
+        "outputPath": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Data/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/alexeilers/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.407/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Models/Muza.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Models/Muza.Models.csproj",
+        "projectName": "Muza.Models",
+        "projectPath": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Models/Muza.Models.csproj",
+        "packagesPath": "/Users/alexeilers/.nuget/packages/",
+        "outputPath": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Models/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/alexeilers/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.407/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Services/Muza.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Services/Muza.Services.csproj",
+        "projectName": "Muza.Services",
+        "projectPath": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Services/Muza.Services.csproj",
+        "packagesPath": "/Users/alexeilers/.nuget/packages/",
+        "outputPath": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Services/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/alexeilers/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Data/Muza.Data.csproj": {
+                "projectPath": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Data/Muza.Data.csproj"
+              },
+              "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Models/Muza.Models.csproj": {
+                "projectPath": "/Users/alexeilers/Documents/SD134FT/MuzaAPI/Muza.Models/Muza.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.407/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
